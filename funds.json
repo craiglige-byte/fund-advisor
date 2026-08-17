@@ -1,0 +1,183 @@
+{
+  "user": {
+    "name": "teemo",
+    "total_invested": 205224.2,
+    "monthly_budget": 0
+  },
+  "funds": [
+    {
+      "code": "008280",
+      "name": "国泰中证煤炭ETF联接C",
+      "type": "指数型-股票",
+      "cost_nav": 2.2198,
+      "shares": 1351.47,
+      "invested": 3000.0,
+      "buy_date": "",
+      "note": "持有收益率 +3.77%"
+    },
+    {
+      "code": "007114",
+      "name": "永赢高端制造混合C",
+      "type": "混合型-偏股",
+      "cost_nav": 2.2889,
+      "shares": 1563.83,
+      "invested": 3579.41,
+      "buy_date": "",
+      "note": "持有收益率 +9.37%"
+    },
+    {
+      "code": "011103",
+      "name": "天弘中证光伏产业指数C",
+      "type": "指数型-股票",
+      "cost_nav": 0.897,
+      "shares": 5128.84,
+      "invested": 4600.66,
+      "buy_date": "",
+      "note": "持有收益率 -18.04%"
+    },
+    {
+      "code": "018075",
+      "name": "长盛航天海工混合C",
+      "type": "混合型-灵活",
+      "cost_nav": 1.8817,
+      "shares": 1062.87,
+      "invested": 2000.0,
+      "buy_date": "",
+      "note": "持有收益率 -18.20%"
+    },
+    {
+      "code": "015968",
+      "name": "永赢半导体产业智选混合发起C",
+      "type": "混合型-偏股",
+      "cost_nav": 2.8459,
+      "shares": 9854.0,
+      "invested": 28043.34,
+      "buy_date": "",
+      "note": "持有收益率 -7.53%"
+    },
+    {
+      "code": "021594",
+      "name": "上银数字经济混合发起式C",
+      "type": "混合型-偏股",
+      "cost_nav": 2.787,
+      "shares": 2760.08,
+      "invested": 7692.35,
+      "buy_date": "",
+      "note": "持有收益率 -4.34%"
+    },
+    {
+      "code": "025209",
+      "name": "永赢先锋半导体智选混合发起C",
+      "type": "混合型-偏股",
+      "cost_nav": 2.9895,
+      "shares": 7236.37,
+      "invested": 21633.48,
+      "buy_date": "",
+      "note": "持有收益率 -19.08%"
+    },
+    {
+      "code": "015839",
+      "name": "广发招利混合C",
+      "type": "混合型-偏股",
+      "cost_nav": 1.207,
+      "shares": 4970.94,
+      "invested": 6000.0,
+      "buy_date": "",
+      "note": "持有收益率 -24.09%"
+    },
+    {
+      "code": "018957",
+      "name": "中航机遇领航混合发起C",
+      "type": "混合型-偏股",
+      "cost_nav": 5.5302,
+      "shares": 1265.77,
+      "invested": 7000.0,
+      "buy_date": "",
+      "note": "持有收益率 -16.17%"
+    },
+    {
+      "code": "010012",
+      "name": "景顺景颐招利6个月持有期债券C",
+      "type": "债券型-混合二级",
+      "cost_nav": 1.3032,
+      "shares": 15347.03,
+      "invested": 20000.0,
+      "buy_date": "",
+      "note": "持有收益率 +0.37%"
+    },
+    {
+      "code": "018847",
+      "name": "华泰保兴尊睿6个月持有债券发起C",
+      "type": "债券型-混合一级",
+      "cost_nav": 1.1003,
+      "shares": 36354.32,
+      "invested": 40000.0,
+      "buy_date": "",
+      "note": "持有收益率 +0.62%"
+    },
+    {
+      "code": "014087",
+      "name": "兴全恒悦180天持有债券C",
+      "type": "债券型-长债",
+      "cost_nav": 1.1536,
+      "shares": 43342.58,
+      "invested": 50000.0,
+      "buy_date": "",
+      "note": "持有收益率 +1.07%"
+    },
+    {
+      "code": "011452",
+      "name": "华泰柏瑞质量成长C",
+      "type": "混合型-偏股",
+      "cost_nav": 2.9529,
+      "shares": 9.13,
+      "invested": 26.96,
+      "buy_date": "",
+      "note": "持有收益率 -0.59%"
+    },
+    {
+      "code": "002112",
+      "name": "德邦鑫星价值灵活配置混合C",
+      "type": "混合型-灵活",
+      "cost_nav": 4.4346,
+      "shares": 5.89,
+      "invested": 26.12,
+      "buy_date": "",
+      "note": "持有收益率 +15.93%"
+    },
+    {
+      "code": "016371",
+      "name": "信澳业绩驱动混合C",
+      "type": "混合型-偏股",
+      "cost_nav": 3.5147,
+      "shares": 10.51,
+      "invested": 36.94,
+      "buy_date": "",
+      "note": "持有收益率 -22.66%"
+    },
+    {
+      "code": "023930",
+      "name": "银华国证港股通创新药ETF发起式联接C",
+      "type": "指数型-股票",
+      "cost_nav": 1.0448,
+      "shares": 11087.92,
+      "invested": 11584.94,
+      "buy_date": "",
+      "note": "持有收益率 +7.31%"
+    }
+  ],
+  "watchlist": [
+    {
+      "code": "510300",
+      "name": "沪深300ETF",
+      "note": "跟踪大盘基准"
+    },
+    {
+      "code": "510500",
+      "name": "中证500ETF",
+      "note": "中盘基准"
+    }
+  ],
+  "last_import": "2026-08-17T11:20:00",
+  "import_method": "screenshot_manual"
+}

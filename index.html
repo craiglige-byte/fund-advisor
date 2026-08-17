@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基金日报 - 2026年08月17日 周一</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                         "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: #f5f6fa;
+            color: #2d3436;
+            line-height: 1.6;
+        }
+        .container { max-width: 680px; margin: 0 auto; padding: 16px; }
+
+        /* 顶部概览 */
+        .summary {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .summary h1 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+        .summary .date { font-size: 14px; opacity: 0.7; margin-bottom: 16px; }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        .summary-item {
+            text-align: center;
+            padding: 12px 8px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+        }
+        .summary-item .value { font-size: 22px; font-weight: 700; }
+        .summary-item .label { font-size: 12px; opacity: 0.7; margin-top: 4px; }
+        .summary-signals {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+        .signal-chip {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .signal-buy { background: rgba(0,200,83,0.25); color: #69f0ae; }
+        .signal-hold { background: rgba(255,171,0,0.25); color: #ffd740; }
+        .signal-sell { background: rgba(255,82,82,0.25); color: #ff8a80; }
+
+        /* 指数栏 */
+        .index-bar {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        .index-item { text-align: center; min-width: 70px; }
+        .index-item .idx-name { font-size: 12px; color: #888; }
+        .index-item .idx-price { font-size: 15px; font-weight: 600; }
+        .idx-up { color: #e53935; }
+        .idx-down { color: #43a047; }
+
+        /* 基金卡片 */
+        .fund-card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        .fund-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .fund-emoji { font-size: 24px; }
+        .fund-name-group { flex: 1; }
+        .fund-name { font-size: 16px; font-weight: 600; display: block; }
+        .fund-code { font-size: 12px; color: #aaa; }
+        .suggestion-badge {
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .badge-green { background: #e8f5e9; color: #2e7d32; }
+        .badge-yellow { background: #fff8e1; color: #f57f17; }
+        .badge-red { background: #ffebee; color: #c62828; }
+        .badge-gray { background: #eceff1; color: #607d8b; }
+
+        .fund-metrics {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .metric { text-align: center; }
+        .metric-label { font-size: 11px; color: #999; display: block; }
+        .metric-value { font-size: 16px; font-weight: 600; display: block; }
+        .metric-sub { font-size: 11px; color: #bbb; }
+        .positive { color: #e53935; }
+        .negative { color: #43a047; }
+
+        .fund-signals ul {
+            list-style: none;
+            padding: 8px 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .fund-signals li {
+            font-size: 13px;
+            color: #666;
+            padding: 2px 0;
+        }
+        .fund-signals li::before {
+            content: "· ";
+            color: #bbb;
+        }
+
+        /* 底部 */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            color: #bbb;
+            font-size: 12px;
+        }
+        .footer a { color: #888; }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            .fund-metrics { grid-template-columns: repeat(2, 1fr); }
+            .summary-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- 总览 -->
+        <div class="summary">
+            <h1>📊 基金日报</h1>
+            <div class="date">2026年08月17日 周一 · 更新于 11:55</div>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="value">¥197,030</div>
+                    <div class="label">当前市值</div>
+                </div>
+                <div class="summary-item">
+                    <div class="value" style="color: #ff8a80">¥-8,195</div>
+                    <div class="label">累计盈亏</div>
+                </div>
+                <div class="summary-item">
+                    <div class="value" style="color: #ffd740">¥+857</div>
+                    <div class="label">今日预计盈亏</div>
+                </div>
+                <div class="summary-item">
+                    <div class="value">16只</div>
+                    <div class="label">持仓基金</div>
+                </div>
+            </div>
+            <div class="summary-signals">
+                <span class="signal-chip signal-buy">🟢 2 只可加仓</span>
+                <span class="signal-chip signal-hold">🟡 14 只持有</span>
+                <span class="signal-chip signal-sell">🔴 0 只关注</span>
+            </div>
+        </div>
+
+        <!-- 市场指数 -->
+        <div class="index-bar">
+            
+        </div>
+
+        <!-- 操作建议列表 -->
+        <h2 style="font-size:17px; margin:16px 0 12px; color:#555;">📋 今日操作建议</h2>
+        
+        <div class="fund-card" style="border-left: 4px solid yellow;">
+            <div class="fund-header">
+                <span class="fund-emoji">🟡</span>
+                <div class="fund-name-group">
+                    <span class="fund-name">兴全恒悦180天持有债券C</span>
+                    <span class="fund-code">014087</span>
+                </div>
+                <span class="suggestion-badge badge-yellow">持有观望</span>
+            </div>
+            <div class="fund-metrics">
+                <div class="metric">
+                    <span class="metric-label">持有金额</span>
+                    <span class="metric-value">¥50,537</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">最新净值</span>
+                    <span class="metric-value">1.1660</span>
+                    <span class="metric-sub">(2026-08-14)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">今日涨跌</span>
+                    <span class="metric-value positive">+0.01%</span>
+                    <span class="metric-sub">¥+5</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">持仓成本</span>
+                    <span class="metric-value">1.1536</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">累计盈亏</span>
+                    <span class="metric-value positive">+1.1%</span>
+                    <span class="metric-sub">¥+537</span>
+                </div>
+            </div>
+            <div class="fund-signals">
+                <ul><li>盈亏 +1.1%</li></ul>
+            </div>
+        </div>
+        
+        <div class="fund-card" style="border-left: 4px solid yellow;">
+            <div class="fund-header">
+                <span class="fund-emoji">🟡</span>
+                <div class="fund-name-group">
+                    <span class="fund-name">华泰保兴尊睿6个月持有债券发起C</span>
+                    <span class="fund-code">018847</span>
+                </div>
+                <span class="suggestion-badge badge-yellow">持有观望</span>
+            </div>
+            <div class="fund-metrics">
+                <div class="metric">
+                    <span class="metric-label">持有金额</span>
+                    <span class="metric-value">¥40,247</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">最新净值</span>
+                    <span class="metric-value">1.1071</span>
+                    <span class="metric-sub">(2026-08-14)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">今日涨跌</span>
+                    <span class="metric-value positive">+0.01%</span>
+                    <span class="metric-sub">¥+4</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">持仓成本</span>
+                    <span class="metric-value">1.1003</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">累计盈亏</span>
+                    <span class="metric-value positive">+0.6%</span>
+                    <span class="metric-sub">¥+247</span>
+                </div>
+            </div>
+            <div class="fund-signals">
+                <ul><li>盈亏 +0.6%</li></ul>
+            </div>
+        </div>
+        
+        <div class="fund-card" style="border-left: 4px solid yellow;">
+            <div class="fund-header">
+                <span class="fund-emoji">🟡</span>
+                <div class="fund-name-group">
+                    <span class="fund-name">永赢半导体产业智选混合发起C</span>
+                    <span class="fund-code">015968</span>
+                </div>
+                <span class="suggestion-badge badge-yellow">持有观望</span>
+            </div>
+            <div class="fund-metrics">
+                <div class="metric">
+                    <span class="metric-label">持有金额</span>
+                    <span class="metric-value">¥25,932</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">最新净值</span>
+                    <span class="metric-value">2.6316</span>
+                    <span class="metric-sub">(2026-08-14)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">今日涨跌</span>
+                    <span class="metric-value positive">+0.82%</span>
+                    <span class="metric-sub">¥+213</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">持仓成本</span>
+                    <span class="metric-value">2.8459</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">累计盈亏</span>
+                    <span class="metric-value negative">-7.5%</span>
+                    <span class="metric-sub">¥-2112</span>
+                </div>
+            </div>
+            <div class="fund-signals">
+                <ul><li>亏损 -7.5%，轻微浮亏</li></ul>
+            </div>
+        </div>
+        
+        <div class="fund-card" style="border-left: 4px solid yellow;">
+            <div class="fund-header">
+                <span class="fund-emoji">🟡</span>
+                <div class="fund-name-group">
+                    <span class="fund-name">景顺景颐招利6个月持有期债券C</span>
+                    <span class="fund-code">010012</span>
+                </div>
+                <span class="suggestion-badge badge-yellow">持有观望</span>
+            </div>
+            <div class="fund-metrics">
+                <div class="metric">
+                    <span class="metric-label">持有金额</span>
+                    <span class="metric-value">¥20,074</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">最新净值</span>
+                    <span class="metric-value">1.3080</span>
+                    <span class="metric-sub">(2026-08-14)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">今日涨跌</span>
+                    <span class="metric-value positive">+0.09%</span>
+                    <span class="metric-sub">¥+18</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">持仓成本</span>
+                    <span class="metric-value">1.3032</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">累计盈亏</span>
+                    <span class="metric-value positive">+0.4%</span>
+                    <span class="metric-sub">¥+74</span>
+                </div>
+            </div>
+            <div class="fund-signals">
+                <ul><li>盈亏 +0.4%</li></ul>
+            </div>
+        </div>
+        
+        <div class="fund-card" style="border-left: 4px solid yellow;">
+            <div class="fund-header">
+                <span class="fund-emoji">🟡</span>
+                <div class="fund-name-group">
+                    <span class="fund-name">永赢先锋半导体智选混合发起C</span>
+                    <span class="fund-code">025209</span>
+                </div>
+                <span class="suggestion-badge badge-yellow">持有观望</span>
+            </div>
+            <div class="fund-metrics">
+                <div class="metric">
+                    <span class="metric-label">持有金额</span>
+                    <span class="metric-value">¥17,506</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">最新净值</span>
+                    <span class="metric-value">2.4191</span>
+                    <span class="metric-sub">(2026-08-14)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">今日涨跌</span>
+                    <span class="metric-value positive">+2.72%</span>
+                    <span class="metric-sub">¥+476</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">持仓成本</span>
+                    <span class="metric-value">2.9895</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">累计盈亏</span>
+                    <span class="metric-value negative">-19.1%</span>
+                    <span class="metric-sub">¥-4128</span>
+                </div>
+            </div>
+            <div class="fund-signals">
+                <ul><li>亏损 -19.1%，轻微浮亏</li></ul>
+            </div>
+        </div>
+        
+        <div class="fund-card" style="border-left: 4px solid yellow;">
+            <div class="fund-header">
+                <span class="fund-emoji">🟡</span>
+                <div class="fund-name-group">
+                    <span class="fund-name">银华国证港股通创新药ETF发起式联接C</span>
+                    <span class="fund-code">023930</span>
+                </div>
+                <span class="suggestion-badge badge-yellow">持有观望</span>
+            </div>
+            <div class="fund-metrics">
+                <div class="metric">
+                    <span class="metric-label">持有金额</span>
+                    <span class="metric-value">¥12,432</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">最新净值</span>
+                    <span class="metric-value">1.1212</span>
+                    <span class="metric-sub">(2026-08-14)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">今日涨跌</span>
+                    <span class="metric-value negative">-2.14%</span>
+                    <span class="metric-sub">¥-266</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">持仓成本</span>
+                    <span class="metric-value">1.0448</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">累计盈亏</span>
+                    <span class="metric-value positive">+7.3%</span>
+                    <span class="metric-sub">¥+847</span>
+                </div>
+            </div>
+            <div class="fund-signals">
+                <ul><li>盈亏 +7.3%</li></ul>
+            </div>
+        </div>
+        
+        <div class="fund-card" style="border-left: 4px solid yellow;">
+            <div class="fund-header">
+                <span class="fund-emoji">🟡</span>
+                <div class="fund-name-group">
+                    <span class="fund-name">上银数字经济混合发起式C</span>
+                    <span class="fund-code">021594</span>
+                </div>
+                <span class="suggestion-badge badge-yellow">持有观望</span>
+            </div>
+            <div class="fund-metrics">
+                <div class="metric">
+                    <span class="metric-label">持有金额</span>
+                    <span class="metric-value">¥7,358</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">最新净值</span>
+                    <span class="metric-value">2.6660</span>
+                    <span class="metric-sub">(2026-08-14)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">今日涨跌</span>
+                    <span class="metric-value positive">+0.70%</span>
+                    <span class="metric-sub">¥+52</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">持仓成本</span>
+                    <span class="metric-value">2.7870</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">累计盈亏</span>
+                    <span class="metric-value negative">-4.3%</span>
+                    <span class="metric-sub">¥-334</span>
+                </div>
+            </div>
+            <div class="fund-signals">
+                <ul><li>盈亏 -4.3%</li></ul>
+            </div>
+        </div>
+        
+        <div class="fund-card" style="border-left: 4px solid yellow;">
+            <div class="fund-header">
+                <span class="fund-emoji">🟡</span>
+                <div class="fund-name-group">
+                    <span class="fund-name">中航机遇领航混合发起C</span>
+                    <span class="fund-code">018957</span>
+                </div>
+                <span class="suggestion-badge badge-yellow">持有观望</span>
+            </div>
+            <div class="fund-metrics">
+                <div class="metric">
+                    <span class="metric-label">持有金额</span>
+                    <span class="metric-value">¥5,868</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">最新净值</span>
+                    <span class="metric-value">4.6360</span>
+                    <span class="metric-sub">(2026-08-14)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">今日涨跌</span>
+                    <span class="metric-value positive">+2.19%</span>
+                    <span class="metric-sub">¥+129</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">持仓成本</span>
+                    <span class="metric-value">5.5302</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">累计盈亏</span>
+                    <span class="metric-value negative">-16.2%</span>
+                    <span class="metric-sub">¥-1132</span>
+                </div>
+            </div>
+            <div class="fund-signals">
+                <ul><li>亏损 -16.2%，轻微浮亏</li></ul>
+            </div>
+        </div>
+        
+        <div class="fund-card" style="border-left: 4px solid green;">
+            <div class="fund-header">
+                <span class="fund-emoji">🟢</span>
+                <div class="fund-name-group">
+                    <span class="fund-name">广发招利混合C</span>
+                    <span class="fund-code">015839</span>
+                </div>
+                <span class="suggestion-badge badge-green">可考虑加仓</span>
+            </div>
+            <div class="fund-metrics">
+                <div class="metric">
+                    <span class="metric-label">持有金额</span>
+                    <span class="metric-value">¥4,555</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">最新净值</span>
+                    <span class="metric-value">0.9163</span>
+                    <span class="metric-sub">(2026-08-14)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">今日涨跌</span>
+                    <span class="metric-value positive">+1.14%</span>
+                    <span class="metric-sub">¥+52</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">持仓成本</span>
+                    <span class="metric-value">1.2070</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">累计盈亏</span>
+                    <span class="metric-value negative">-24.1%</span>
+                    <span class="metric-sub">¥-1445</span>
+                </div>
+            </div>
+            <div class="fund-signals">
+                <ul><li>亏损 -24.1%，大幅亏损，但低位不宜割肉</li></ul>
+            </div>
+        </div>
+        
+        <div class="fund-card" style="border-left: 4px solid yellow;">
+            <div class="fund-header">
+                <span class="fund-emoji">🟡</span>
+                <div class="fund-name-group">
+                    <span class="fund-name">永赢高端制造混合C</span>
+                    <span class="fund-code">007114</span>
+                </div>
+                <span class="suggestion-badge badge-yellow">持有观望</span>
+            </div>
+            <div class="fund-metrics">
+                <div class="metric">
+                    <span class="metric-label">持有金额</span>
+                    <span class="metric-value">¥3,915</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">最新净值</span>
+                    <span class="metric-value">2.5033</span>
+                    <span class="metric-sub">(2026-08-14)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">今日涨跌</span>
+                    <span class="metric-value positive">+2.23%</span>
+                    <span class="metric-sub">¥+87</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">持仓成本</span>
+                    <span class="metric-value">2.2889</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">累计盈亏</span>
+                    <span class="metric-value positive">+9.4%</span>
+                    <span class="metric-sub">¥+335</span>
+                </div>
+            </div>
+            <div class="fund-signals">
+                <ul><li>盈亏 +9.4%</li></ul>
+            </div>
+        </div>
+        
+        <div class="fund-card" style="border-left: 4px solid yellow;">
+            <div class="fund-header">
+                <span class="fund-emoji">🟡</span>
+                <div class="fund-name-group">
+                    <span class="fund-name">天弘中证光伏产业指数C</span>
+                    <span class="fund-code">011103</span>
+                </div>
+                <span class="suggestion-badge badge-yellow">持有观望</span>
+            </div>
+            <div class="fund-metrics">
+                <div class="metric">
+                    <span class="metric-label">持有金额</span>
+                    <span class="metric-value">¥3,771</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">最新净值</span>
+                    <span class="metric-value">0.7352</span>
+                    <span class="metric-sub">(2026-08-14)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">今日涨跌</span>
+                    <span class="metric-value positive">+0.07%</span>
+                    <span class="metric-sub">¥+3</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">持仓成本</span>
+                    <span class="metric-value">0.8970</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">累计盈亏</span>
+                    <span class="metric-value negative">-18.0%</span>
+                    <span class="metric-sub">¥-830</span>
+                </div>
+            </div>
+            <div class="fund-signals">
+                <ul><li>亏损 -18.0%，轻微浮亏</li></ul>
+            </div>
+        </div>
+        
+        <div class="fund-card" style="border-left: 4px solid yellow;">
+            <div class="fund-header">
+                <span class="fund-emoji">🟡</span>
+                <div class="fund-name-group">
+                    <span class="fund-name">国泰中证煤炭ETF联接C</span>
+                    <span class="fund-code">008280</span>
+                </div>
+                <span class="suggestion-badge badge-yellow">持有观望</span>
+            </div>
+            <div class="fund-metrics">
+                <div class="metric">
+                    <span class="metric-label">持有金额</span>
+                    <span class="metric-value">¥3,113</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">最新净值</span>
+                    <span class="metric-value">2.3036</span>
+                    <span class="metric-sub">(2026-08-14)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">今日涨跌</span>
+                    <span class="metric-value positive">+1.64%</span>
+                    <span class="metric-sub">¥+51</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">持仓成本</span>
+                    <span class="metric-value">2.2198</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">累计盈亏</span>
+                    <span class="metric-value positive">+3.8%</span>
+                    <span class="metric-sub">¥+113</span>
+                </div>
+            </div>
+            <div class="fund-signals">
+                <ul><li>盈亏 +3.8%</li></ul>
+            </div>
+        </div>
+        
+        <div class="fund-card" style="border-left: 4px solid yellow;">
+            <div class="fund-header">
+                <span class="fund-emoji">🟡</span>
+                <div class="fund-name-group">
+                    <span class="fund-name">长盛航天海工混合C</span>
+                    <span class="fund-code">018075</span>
+                </div>
+                <span class="suggestion-badge badge-yellow">持有观望</span>
+            </div>
+            <div class="fund-metrics">
+                <div class="metric">
+                    <span class="metric-label">持有金额</span>
+                    <span class="metric-value">¥1,636</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">最新净值</span>
+                    <span class="metric-value">1.5392</span>
+                    <span class="metric-sub">(2026-08-14)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">今日涨跌</span>
+                    <span class="metric-value positive">+1.92%</span>
+                    <span class="metric-sub">¥+31</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">持仓成本</span>
+                    <span class="metric-value">1.8817</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">累计盈亏</span>
+                    <span class="metric-value negative">-18.2%</span>
+                    <span class="metric-sub">¥-364</span>
+                </div>
+            </div>
+            <div class="fund-signals">
+                <ul><li>亏损 -18.2%，轻微浮亏</li></ul>
+            </div>
+        </div>
+        
+        <div class="fund-card" style="border-left: 4px solid yellow;">
+            <div class="fund-header">
+                <span class="fund-emoji">🟡</span>
+                <div class="fund-name-group">
+                    <span class="fund-name">德邦鑫星价值灵活配置混合C</span>
+                    <span class="fund-code">002112</span>
+                </div>
+                <span class="suggestion-badge badge-yellow">谨慎持有</span>
+            </div>
+            <div class="fund-metrics">
+                <div class="metric">
+                    <span class="metric-label">持有金额</span>
+                    <span class="metric-value">¥30</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">最新净值</span>
+                    <span class="metric-value">5.1411</span>
+                    <span class="metric-sub">(2026-08-14)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">今日涨跌</span>
+                    <span class="metric-value positive">+3.47%</span>
+                    <span class="metric-sub">¥+1</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">持仓成本</span>
+                    <span class="metric-value">4.4346</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">累计盈亏</span>
+                    <span class="metric-value positive">+15.9%</span>
+                    <span class="metric-sub">¥+4</span>
+                </div>
+            </div>
+            <div class="fund-signals">
+                <ul><li>盈利 15.9%，收益可观，可观察是否止盈</li><li>近1年最大回撤 25.8%，波动较大</li></ul>
+            </div>
+        </div>
+        
+        <div class="fund-card" style="border-left: 4px solid green;">
+            <div class="fund-header">
+                <span class="fund-emoji">🟢</span>
+                <div class="fund-name-group">
+                    <span class="fund-name">信澳业绩驱动混合C</span>
+                    <span class="fund-code">016371</span>
+                </div>
+                <span class="suggestion-badge badge-green">可考虑加仓</span>
+            </div>
+            <div class="fund-metrics">
+                <div class="metric">
+                    <span class="metric-label">持有金额</span>
+                    <span class="metric-value">¥29</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">最新净值</span>
+                    <span class="metric-value">2.7180</span>
+                    <span class="metric-sub">(2026-08-14)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">今日涨跌</span>
+                    <span class="metric-value positive">+3.99%</span>
+                    <span class="metric-sub">¥+1</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">持仓成本</span>
+                    <span class="metric-value">3.5147</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">累计盈亏</span>
+                    <span class="metric-value negative">-22.7%</span>
+                    <span class="metric-sub">¥-8</span>
+                </div>
+            </div>
+            <div class="fund-signals">
+                <ul><li>亏损 -22.7%，大幅亏损，但低位不宜割肉</li><li>近1年最大回撤 26.7%，波动较大</li></ul>
+            </div>
+        </div>
+        
+        <div class="fund-card" style="border-left: 4px solid yellow;">
+            <div class="fund-header">
+                <span class="fund-emoji">🟡</span>
+                <div class="fund-name-group">
+                    <span class="fund-name">华泰柏瑞质量成长C</span>
+                    <span class="fund-code">011452</span>
+                </div>
+                <span class="suggestion-badge badge-yellow">持有观望</span>
+            </div>
+            <div class="fund-metrics">
+                <div class="metric">
+                    <span class="metric-label">持有金额</span>
+                    <span class="metric-value">¥27</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">最新净值</span>
+                    <span class="metric-value">2.9351</span>
+                    <span class="metric-sub">(2026-08-14)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">今日涨跌</span>
+                    <span class="metric-value positive">+2.86%</span>
+                    <span class="metric-sub">¥+1</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">持仓成本</span>
+                    <span class="metric-value">2.9529</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">累计盈亏</span>
+                    <span class="metric-value negative">-0.6%</span>
+                    <span class="metric-sub">¥-0</span>
+                </div>
+            </div>
+            <div class="fund-signals">
+                <ul><li>盈亏 -0.6%</li><li>近1年最大回撤 25.1%，波动较大</li></ul>
+            </div>
+        </div>
+        
+
+        <div class="footer">
+            <p>🤖 由基金日报助手自动生成 · 数据来源：天天基金、东方财富</p>
+            <p>⚠️ 仅供参考，不构成投资建议。投资有风险，买卖需谨慎。</p>
+            <p style="margin-top:8px;">
+                <a href="funds.json">📁 持仓配置</a> ·
+                上次更新: 11:55
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>

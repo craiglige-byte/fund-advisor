@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+debug_ocr_output.txt
+.env
+screenshots/
+lookup_result.txt
