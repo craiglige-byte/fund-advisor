@@ -1,0 +1,36 @@
+name: 基金日报自动生成
+
+on:
+  schedule:
+    # 每个交易日 21:15 (北京时间) 运行，此时当日基金净值已公布
+    - cron: '15 13 * * 1-5'
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: |
+          pip install requests akshare pandas
+
+      - name: 生成日报
+        run: |
+          python generate_report.py
+
+      - name: 提交报告
+        run: |
+          git config user.name "基金日报助手"
+          git config user.email "fund-bot@github.com"
+          git add index.html funds.json
+          git diff --staged --quiet || git commit -m "📊 更新基金日报 $(date +%Y-%m-%d)"
+          git push
